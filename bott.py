@@ -26,7 +26,7 @@ async def cat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 
-app = ApplicationBuilder().token("5826037486:AAGj9QrWywR_dFQvAeJVHPwAUIkPzu0PJ9c").build()
+app = ApplicationBuilder().token("").build()
 
 app.add_handler(CommandHandler("hello", hello))
 app.add_handler(CommandHandler("help", help_handler))
