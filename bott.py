@@ -1,8 +1,9 @@
 
-import getopt
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, MessageHandler, filters, Updater, CallbackContext
 from voice import text_to_file
+import requests
+import random
 
 async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(f'Привет {update.effective_user.first_name}')
@@ -20,8 +21,10 @@ async def reply(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     #await update.message.reply_text(update.message.text.upper())
     await update.message.reply_voice(voice = open(file_name, "rb"))
 
-async def cat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_photo(photo = open("C:\dev\speech_bot\data\kotik.jpg", 'rb'))
+async def cat_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)-> None:
+    response = requests.get('https://api.thecatapi.com/v1/images/search')
+    cat_url = response.json()[0]['url']
+    await context.bot.send_photo(chat_id=update.effective_chat.id, photo=cat_url)
 
 
 
@@ -32,6 +35,6 @@ app.add_handler(CommandHandler("hello", hello))
 app.add_handler(CommandHandler("help", help_handler))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, reply))
 app.add_handler(CommandHandler("author", author))
-app.add_handler(CommandHandler("cat", cat))
+app.add_handler(CommandHandler("cat", cat_handler))
 app.run_polling()
 
