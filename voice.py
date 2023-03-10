@@ -4,10 +4,10 @@ engine.setProperty('voice', "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices
 
 
 def text_to_file(text):
-   tmp_file_name = "sounds"
-   engine.save_to_file(text, f"data/{tmp_file_name}.mp3")
+   tmp_file_name = "sounds.mp3"
+   engine.save_to_file(text, "sounds.mp3")
    engine.runAndWait()
-   return f"data/{tmp_file_name}.mp3"
+   return tmp_file_name
 
 
 
