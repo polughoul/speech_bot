@@ -29,6 +29,7 @@ async def cat_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)-> None
     await context.bot.send_photo(chat_id=update.effective_chat.id, photo=cat_url)
 
 app = ApplicationBuilder().token("").build()
+#Для получения токена, воспользуйтесь телеграмм-ботом BotFather
 
 app.add_handler(CommandHandler("hello", hello))
 app.add_handler(CommandHandler("help", help_handler))
