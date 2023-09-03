@@ -1,4 +1,3 @@
 # speech_bot
 
-Данный проект содержит код Telegram бота, основная задача которого преобразовывать текст в аудио. 
-Также он может отправлять картинку по команде.
+This project contains the Telegram bot code, the main task of which is to convert text into audio. It can also send a picture on command.
